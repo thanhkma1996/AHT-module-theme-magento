@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container" htmlId="header" >
+				  <referenceContainer name="header.panel.wrapper" htmlClass="header-top">
+					<container htmlTag="div" htmlClass="container">
+						<container htmlTag="div" htmlClass="row">
+						  	<container name="header.panel.store" htmlTag="div" htmlClass="header-panel-store col-sm-3" before="-">
+									<block class="Magento\Store\Block\Switcher" name="store_language" as="store_language" template="switch/languages.phtml"/>
+									  <block class="Magento\Directory\Block\Currency" name="currency" before="-" template="currency.phtml"/>
+							</container>
+						 	<container name="hearder.top.middle" htmlTag="div" htmlClass="col-sm-6">
+						  		<block class="Magento\Cms\Block\Block" name="slogan">
+								    <arguments>
+								        <argument name="block_id" xsi:type="string">slogan-title</argument>
+								    </arguments>
+								</block>
+							</container>
+							<container name="hearder.top.right" htmlTag="div" htmlClass="col-sm-3">
+								<block class="\Magento\Framework\View\Element\Template" name="link-login" template='Magento_Theme::link.phtml'>   
+								</block>
+							</container>
+						</container>
+					</container>
+	              </referenceContainer>
+	              <referenceContainer name="header-wrapper" htmlClass="header-bottom container" >
+	              	<container htmlTag="div" htmlClass="row">
+		              	<container name="hearder.bottom.left" htmlTag="div" htmlClass="col-sm-3 hearder-bottom-left" before="-">
+		              		 <block class="Magento\Cms\Block\Block" name="social">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">social-link</argument>
+							    </arguments>
+							</block>
+						</container>
+						<container name="hearder.bottom.middle" htmlTag="div" htmlClass="col-sm-6 hearder-bottom-middle">
+						</container>
+					
+						 <container name="search.wishlist.minicart" htmlTag="div" htmlClass="search-wishlist-minicart col-sm-3" after="-">
+		           			 <block class="Magento\Wishlist\Block\Link" name="wish-list-link">
+				                <arguments>
+				                    <argument name="sortOrder" xsi:type="number">60</argument>
+				                </arguments>
+				            </block>
+	              		 </container>
+              		 </container>
+	              </referenceContainer>
+         </referenceContainer>
+
+           <move element="minicart" destination="search.wishlist.minicart" after="-"/>
+           <move element="top.search" destination="search.wishlist.minicart" before="-"/>
+           <move element="logo" destination="hearder.bottom.middle" before="search.wishlist.minicart"/>
+
+
+
+
+   
+    <!--      <move element="Promo" destination="header.panel" before="-"/> -->
+<!--          <move element="page.top" destination="header.container" after="header-wrapper"/>
+         <move element="top.links" destination="header-shop-menu"/> -->
+			
+			<referenceBlock name="top.links" remove="true"/>  
+			<referenceBlock name="skip_to_content" remove="true"/>  
+    </body>
+</page>
+
+<!-- <ul>
+	<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+	<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+	<li><a href="https://plus.google.com/"><i class="fab fa-google-plus-g"></i></a></li>
+	<li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+	<li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+</ul> -->

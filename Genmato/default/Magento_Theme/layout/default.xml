@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container" htmlId="header" >
+				  <referenceContainer name="header.panel.wrapper" htmlClass="header-top">
+					<container htmlTag="div" htmlClass="container">
+						<container htmlTag="div" htmlClass="row">
+						  	<container name="header.panel.store" htmlTag="div" htmlClass="header-panel-store col-sm-3" before="-">
+								<block class="Magento\Cms\Block\Block" name="language">
+									<arguments>
+										<argument name="block_id" xsi:type="string">titile-language</argument>
+									</arguments>
+								</block>
+							</container>
+						 	<container name="hearder.top.middle" htmlTag="div" htmlClass="col-sm-6">
+						  		<block class="Magento\Cms\Block\Block" name="slogan">
+								    <arguments>
+								        <argument name="block_id" xsi:type="string">slogan-title</argument>
+								    </arguments>
+								</block>
+							</container>
+							<container name="hearder.top.right" htmlTag="div" htmlClass="col-sm-3">
+								<block class="\Magento\Framework\View\Element\Template" name="link-login" template='Magento_Theme::link.phtml'>
+								</block>
+							</container>
+						</container>
+					</container>
+	              </referenceContainer>
+	              <referenceContainer name="header-wrapper" htmlClass="header-bottom container" >
+	              	<container htmlTag="div" htmlClass="row">
+		              	<container name="hearder.bottom.left" htmlTag="div" htmlClass="col-sm-3 hearder-bottom-left" before="-">
+		              		 <block class="Magento\Cms\Block\Block" name="facebook">
+							    <arguments>
+							        <argument name="block_id" xsi:type="string">facebook</argument>
+							    </arguments>
+							</block>
+						</container>
+						<container name="hearder.bottom.middle" htmlTag="div" htmlClass="col-sm-6 hearder-bottom-middle">
+						</container>
+
+						 <container name="search.wishlist.minicart" htmlTag="div" htmlClass="search-wishlist-minicart col-sm-3" after="-">
+		           			 <block class="Magento\Wishlist\Block\Link" name="wish-list-link">
+				                <arguments>
+				                    <argument name="sortOrder" xsi:type="number">60</argument>
+				                </arguments>
+				            </block>
+	              		 </container>
+              		 </container>
+	              </referenceContainer>
+         </referenceContainer>
+
+		<referenceContainer name="main">
+			<container name="content.top.main" htmlTag="div" htmlClass="col-sm-12">
+				<block class="\Magento\Framework\View\Element\Template" name="link-login" template='Magento_Theme::slide.phtml'>
+				</block>
+			</container>
+		</referenceContainer>
+
+		<referenceContainer name="header.container">
+			<referenceBlock name="top.search" remove="true"/>
+		</referenceContainer>
+
+           <move element="minicart" destination="search.wishlist.minicart" after="-"/>
+           <move element="top.search" destination="search.wishlist.minicart" before="-"/>
+           <move element="logo" destination="hearder.bottom.middle" before="search.wishlist.minicart"/>
+			<referenceBlock name="top.links" remove="true"/>
+			<referenceBlock name="skip_to_content" remove="true"/>
+		<referenceBlock name="advanced.search" remove="true"/>
+		<referenceBlock name="catalog.compare.sidebar" remove="true" />
+		<referenceBlock name="wishlist_sidebar" remove="true" />
+    </body>
+</page>

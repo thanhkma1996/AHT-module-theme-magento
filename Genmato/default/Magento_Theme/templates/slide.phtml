@@ -1,0 +1,22 @@
+<div class="products list items product-items owlslider">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+<script>
+    (function  () {
+        require(["jquery","owlcarousel"],function($) {
+            $(document).ready(function() {
+                $(".owlslider").owlCarousel({
+                    navigation : true, // Show next and prev buttons
+                    autoPlay: false, //Set AutoPlay to 3 seconds
+                    items : 5
+                });
+            });
+        });
+    })();
+</script>
